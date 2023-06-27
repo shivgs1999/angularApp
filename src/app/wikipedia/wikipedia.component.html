@@ -1,0 +1,64 @@
+<!-- <div class="center">
+    <h6 class="search-header">Search for Title</h6>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search Title" class="search-input">
+      <button class="search-button" (click)="onSearchClick()" >Search</button>
+    </div>
+  </div> 
+    <table class="table table-striped border border-primary">
+        <thead>
+            <tr class="border border-primary">
+                <th class="border border-primary"> Sr No. </th>
+                <th class="border border-primary"> Title </th>
+                <th class="border border-primary"> PageID </th>
+                <th class="border border-primary"> Size </th>
+                <th class="border border-primary"> WordCount </th>
+                <th class="border border-primary"> Snippet </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dd of data; let i = index;">
+                <td class="border border-primary">{{i + 1}}</td>
+                <td class="border border-primary">{{dd.title}}</td>
+                <td class="border border-primary">{{dd.pageid}}</td>
+                <td class="border border-primary">{{dd.size}}</td>
+                <td class="border border-primary">{{dd.wordcount}}</td>
+                <td class="border border-primary">{{dd.snippet}}</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <div class="container">
+        <div class="search-container">
+          <h2>Search Wikipedia Page</h2>
+          <div>
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Enter search query">
+            <button (click)="search()">Search</button>
+          </div>
+        </div>
+      
+        <div class="search-results" *ngIf="searchData">
+          <h2>Search Results</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Page ID</th>
+                <th>Word Count</th>
+                <th>Snippet</th>
+              </tr>
+            </thead>
+         
+            <tbody>
+              <tr *ngFor="let result of searchData.query.search">
+                <td>{{ result.title }}</td>
+                <td>{{ result.pageid }}</td>
+                <td>{{ result.wordcount }}</td>
+                <td [innerHtml]="result.snippet"></td>
+              </tr>
+            </tbody>
+          
+          </table>
+    
+        </div>
+      </div>
